@@ -107,17 +107,21 @@ class romanos():
 			for x in range(0,n_lis):
 				actual = self.unidadesRomanas[lis[x]]
 				anterior = self.unidadesRomanas[lis[x-1]]
-				dosAtras = self.unidadesRomanas[lis[x-2]]
-				tresAtras = self.unidadesRomanas[lis[x-3]]
-				cuatroAtras = self.unidadesRomanas[lis[x-4]]
-			if marca < actual:
-				marca = anterior
+				if x>=2:
+					dosAtras = self.unidadesRomanas[lis[x-2]]
+				else:
+					dosAtras = 10000
 
-				if  x>0 and self.unidadesRomanas.get(x-2)!=None and (actual > dosAtras or actual >= tresAtras or actual >= cuatroAtras) :
+				print "KEY = ",dosAtras
+				print "(actual)",self.unidadesRomanas.get(x),"-",actual," > (dosAtras)",self.unidadesRomanas.get(x-2),"-",dosAtras,"  --  and ",x,">0 )"
+
+
+				if  x>0  and dosAtras!=None and actual > dosAtras  :
 					contador=1
-					print "KEY = ",self.unidadesRomanas.get(x-2)
-					print "(",actual," > (dosAtras)",dosAtras,"  -- ",actual,"  >=(tresAtras) ",tresAtras," and ",x,">0 )"
 					tipo_error=" dosAtras MENOR "
+					print "<<<----ERROR ",dosAtras
+
+
 
 		if contador>0:
 			self.mensa(" TIPO: "+tipo_error+" --> ERROR No es un número romano", numeroR)
