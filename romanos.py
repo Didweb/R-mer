@@ -78,7 +78,6 @@ class romanos():
 
 		resultado = []
 		for i in range(0,len(volteamos)):
-			#print "posicion: ",i," = ",volteamos[i]," en romano= ",self.eco[i][int(volteamos[i])]
 			resultado.append(self.eco[i][int(volteamos[i])])
 
 		crim = resultado[::-1]
@@ -112,14 +111,9 @@ class romanos():
 				else:
 					dosAtras = 10000
 
-				print "KEY = ",dosAtras
-				print "(actual)",self.unidadesRomanas.get(x),"-",actual," > (dosAtras)",self.unidadesRomanas.get(x-2),"-",dosAtras,"  --  and ",x,">0 )"
-
-
 				if  x>0  and dosAtras!=None and actual > dosAtras  :
 					contador=1
 					tipo_error=" dosAtras MENOR "
-					print "<<<----ERROR ",dosAtras
 
 
 
@@ -161,9 +155,9 @@ class romanos():
 
 	def menu(self):
 		print "---------MENÚ-------------"
-		print "\t1 - Decimal a Romano"
-		print "\t2 - Romano a Decimal"
-		print "\t9 - salir"
+		print "\t1 - Decimal >> Romano "
+		print "\t2 - Romano >> Decimal  "
+		print "\t9 - Salir "
 
 
 
