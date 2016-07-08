@@ -25,8 +25,24 @@
 import os
 
 class romanos():
+	"""
+	Clase para convertir números romanos a sistmea dicemal y de sistema
+	decimal a romano.
 
+	Erstellt Klasse Römer in Dezimalzahlen und Dezimalzahlen in
+	römische System zu konvertieren.
+	"""
 	def __init__(self):
+		"""
+		Inicializamos y creamos diccionarios.
+		Situamos el límite hasta donde la aplicación es capaz de
+		calcular los números romanos. Que es hasta los 3999.
+
+		Initialisieren und erstellen Wörterbücher.
+		Wir legen die Grenze, auf die die Anwendung römischen Ziffern
+		zu berechnen kann.
+		Das ist, bis 3999.
+		"""
 		unidades = {0:'',1:'I',2:'II',3:'III',4:'IV',5:'V',6:'VI',7:'VII',8:'VIII',9:'IX'}
 		decenas = {0:'',1:'X',2:'XX',3:'XXX',4:'XL',5:'L',6:'LX',7:'LXX',8:'LXXX',9:'XC'}
 		centenas = {0:'',1:'C',2:'CC',3:'CC',4:'CD',5:'D',6:'DC',7:'DCC',8:'DCCC',9:'CM'}
@@ -40,20 +56,32 @@ class romanos():
 
 
 	def insertar(self):
+		"""
+		Entrada  del número entero.
 
+		Integer-Eingang.
+		"""
 		numero = raw_input("Introduce un número para convertirlo en romano: ")
 		self.errores(numero)
 
 
 
 	def insertarR(self):
+		"""
+		Entrada del número romano.
 
+		Römische Ziffer Eingang.
+		"""
 		numeroR = raw_input("Introduce un número Romano: ")
 		self.erroresR(numeroR.upper())
 
 
 	def calculaR(self):
+		"""
+		Calculos  para convertir el número romano en entero.
 
+		Berechnungen die gesamte römische Zahl zu konvertieren.
+		"""
 		resultadoR = 0
 
 		for i in range(0,len(self.numeroR)):
@@ -73,7 +101,11 @@ class romanos():
 
 
 	def calcula(self):
+		"""
+		Calculos para convertir el número entero en número romano.
 
+		Die Berechnungen, die ganze Zahl in eine römische Zahl zu konvertieren.
+		"""
 		volteamos = self.numero[::-1]
 
 		resultado = []
@@ -90,7 +122,13 @@ class romanos():
 
 
 	def erroresR(self,numeroR):
+		"""
+		Filtro para procesar los posibles errores y devolver un mensaje.
+		Errores durante el proceso de Romano a entero.
 
+		Filter Fehler zu verarbeiten und eine Nachricht zurück.
+		Fehler, die bei Romano Ganzen.
+		"""
 		lis = list(numeroR)
 		n_lis = len(lis)
 		contador = 0
@@ -129,7 +167,13 @@ class romanos():
 
 
 	def errores(self,n):
+		"""
+		Filtro para procesar los posibles errores y devolver un mensaje.
+		Errores durante el proceso de entero a Romano.
 
+		Filter Fehler zu verarbeiten und eine Nachricht zurück.
+		Fehler, die während der gesamten Romano.
+		"""
 		if n.isdigit()== False:
 			self.mensa(" NO es un número. debe introducir un número.",n)
 			self.insertar()
@@ -145,7 +189,12 @@ class romanos():
 
 
 	def mensa(self,txt,n=""):
-		#os.system('clear')
+		"""
+		Procesando mensajes de error.
+
+		Die Verarbeitung Fehlermeldungen .
+		"""
+		os.system('clear')
 		print self.FAIL+"---------------------------------------------"
 		print n+txt
 		print "---------------------------------------------\n"+ self.ENDC
@@ -154,6 +203,11 @@ class romanos():
 
 
 	def menu(self):
+		"""
+		Creación del menú.
+
+		Menü-Erstellung.
+		"""
 		print "---------MENÚ-------------"
 		print "\t1 - Decimal >> Romano "
 		print "\t2 - Romano >> Decimal  "
@@ -162,6 +216,11 @@ class romanos():
 
 
 	def bcolors(self):
+		"""
+		Colores para las salidas de consola.
+
+		Farben für die Konsolenausgabe .
+		"""
 		self.HEADER = '\033[95m'
 		self.OKBLUE = '\033[94m'
 		self.OKGREEN = '\033[92m'
@@ -176,7 +235,9 @@ a = romanos()
 a.menu()
 
 while True:
+	""" Ciclo por dnde hacemos correr el menú y las distintas opciones.
 
+	Zyklus, in dem wir das Menü und die verschiedenen Optionen laufen. """
 	opcionMenu = raw_input("Inserta opción del menú >> ")
 
 	if opcionMenu=="1":
