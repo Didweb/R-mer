@@ -23,7 +23,30 @@
 #
 
 
+from logica.deci_roma import DeciRoma
+from logica.roma_deci import RomaDeci
 
+from tics.consola import clear
+
+
+
+clear()
+deciRoma = DeciRoma()
+romaDeci = RomaDeci()
+
+
+def menu():
+	"""
+	Creación del menú.
+
+	Menü-Erstellung.
+	"""
+	print "---------MENÚ-------------"
+	print "\t1 - Decimal >> Romano "
+	print "\t2 - Romano >> Decimal  "
+	print "\t9 - Salir "
+
+menu()
 while True:
 	""" Ciclo por dnde hacemos correr el menú y las distintas opciones.
 
@@ -32,23 +55,24 @@ while True:
 
 	if opcionMenu=="1":
 		print ""
-		a.insertar()
-		os.system('clear')
-		a.calcula()
-		a.menu()
+		deciRoma.insertar()
+		clear()
+		deciRoma.calcula()
+		menu()
 
 	elif opcionMenu=="2":
 		print ""
-		a.insertarR()
-		os.system('clear')
-		a.calculaR()
-		a.menu()
+		romaDeci.insertarR()
+		clear()
+		romaDeci.calculaR()
+		menu()
 
 	elif opcionMenu=="9":
 		break
 
 	else:
-		a.mensa("No has pulsado una opción correcta...")
-		a.menu()
+		clear()
+		print "No has pulsado una opción correcta..."
+		menu()
 
 
