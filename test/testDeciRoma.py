@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  consola.py
+#  testDeciRoma.py
 #
 #  Copyright 2016 Eduard Pinuaga Linares <info@did-web.com>
 #
@@ -22,33 +22,35 @@
 #
 #
 
-import os
+import unittest, os, sys
+sys.path.append(os.path.abspath('..'))
 
-def clear():
-    if os.name == "posix":
-		os.system ("clear")
-    elif os.name == ("ce", "nt", "dos"):
-		os.system ("cls")
+from logica.deci_roma import DeciRoma
 
 
 
-def bcolors(name):
-	"""
-	Colores para las salidas de consola.
+class tester (unittest.TestCase):
+    def test_1(self):
 
-	Farben für die Konsolenausgabe .
-	"""
-	colores = {
-	'HEADER' : '\033[95m',
-	'OKBLUE' : '\033[94m',
-	'OKGREEN' : '\033[92m',
-	'WARNING' : '\033[93m',
-	'FAIL' : '\033[91m',
-	'ENDC' : '\033[0m',
-	'BOLD' : '\033[1m',
-	'UNDERLINE' : '\033[4m'
-	}
+		a = DeciRoma()
+		resultado = a.limite
 
-	return colores[name]
+		self.assertEqual(9000, resultado)
 
+    def test_2(self):
+
+		a = DeciRoma()
+		resultado = a.limite
+
+		self.assertNotEqual(1, resultado)
+
+    def test_3(self):
+
+		a = DeciRoma()
+		resultado = a.errores('a')
+
+		self.assertFalse(resultado)
+
+if __name__ == "__main__":
+    unittest.main()
 

@@ -83,6 +83,7 @@ class DeciRoma(salida):
 		crim = resultado[::-1]
 		romano = "".join(crim)
 
+
 		self.pintarResultado('d',self.numerosoli,romano)
 
 
@@ -100,14 +101,17 @@ class DeciRoma(salida):
 		if n.isdigit()== False:
 			self.mensa(" NO es un número. debe introducir un número.",n)
 			self.insertar()
+			return False
 
 		elif int(n) > self.limite :
 			self.mensa("No podemos calcular números superiores a "+str(self.limite))
 			self.insertar()
-
+			return False
 		else:
 			self.numero = list(n)
 			self.numerosoli = n
+			return True
+
 
 
 
