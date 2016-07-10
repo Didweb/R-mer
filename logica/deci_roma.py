@@ -81,10 +81,9 @@ class DeciRoma(salida):
 			resultado.append(self.eco[i][int(volteamos[i])])
 
 		crim = resultado[::-1]
-		romano = "".join(crim)
+		self.romano = "".join(crim)
 
-
-		self.pintarResultado('d',self.numerosoli,romano)
+		return self.numerosoli,self.romano
 
 
 
@@ -98,19 +97,27 @@ class DeciRoma(salida):
 		Filter Fehler zu verarbeiten und eine Nachricht zurück.
 		Fehler, die während der gesamten Romano.
 		"""
+		self.numero = 0
+		self.numerosoli = n
+		self.txt=""
 		if n.isdigit()== False:
-			self.mensa(" NO es un número. debe introducir un número.",n)
-			self.insertar()
-			return False
+			self.txt = " NO es un número. debe introducir un número."
+			#self.mensa(" NO es un número. debe introducir un número.",n)
+			#self.insertar()
+			self.apto = False
 
 		elif int(n) > self.limite :
-			self.mensa("No podemos calcular números superiores a "+str(self.limite))
-			self.insertar()
-			return False
+			self.txt = "No podemos calcular números superiores a "+str(self.limite)
+			#self.mensa("No podemos calcular números superiores a "+str(self.limite))
+			#self.insertar()
+			self.apto = False
 		else:
 			self.numero = list(n)
 			self.numerosoli = n
-			return True
+			self.apto = True
+
+
+		return n,self.numero,self.txt,self.apto
 
 
 

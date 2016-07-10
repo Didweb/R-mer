@@ -47,9 +47,21 @@ class tester (unittest.TestCase):
     def test_3(self):
 
 		a = DeciRoma()
-		resultado = a.errores('a')
+		a.numero = (1,0)
+		a.numerosoli = '10'
+		resultado = a.calcula()
 
-		self.assertFalse(resultado)
+		self.assertEqual('X',a.romano)
+
+
+    def test_4(self):
+
+		a = DeciRoma()
+		a.numero = (1,0)
+		a.numerosoli = '10'
+		resultado = a.calcula()
+
+		self.assertNotEqual('XI',a.romano)
 
 if __name__ == "__main__":
     unittest.main()

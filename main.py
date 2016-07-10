@@ -57,8 +57,18 @@ while True:
 		print ""
 		deciRoma.insertar()
 		clear()
-		deciRoma.calcula()
-		menu()
+
+		deciRoma.errores(deciRoma.numerosoli)
+		if deciRoma.apto == False:
+			deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
+			menu()
+			deciRoma.insertar()
+			clear()
+			deciRoma.errores(deciRoma.numerosoli)
+		else:
+			deciRoma.calcula()
+			deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
+			menu()
 
 	elif opcionMenu=="2":
 		print ""
