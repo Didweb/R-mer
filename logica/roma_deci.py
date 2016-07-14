@@ -81,8 +81,7 @@ class RomaDeci(salida):
 				dante = actual
 			resultadoR = resultadoR + dante
 
-
-		self.pintarResultado('r',self.numerosoliR,resultadoR)
+		return self.numerosoliR,self.resultadoR
 
 
 
@@ -102,6 +101,10 @@ class RomaDeci(salida):
 		contador = 0
 		tipo_error = ""
 		marca = 0
+
+		self.numero = 0
+		self.numerosoli = n
+		self.txt=""
 
 		for i in lis:
 			if self.unidadesRomanas.get(i)==None:
@@ -124,11 +127,15 @@ class RomaDeci(salida):
 
 
 		if contador>0:
-			self.mensa(" TIPO: "+tipo_error+" --> ERROR No es un número romano", numeroR)
-			self.insertarR()
+			self.txt=" TIPO: "+tipo_error+" --> ERROR No es un número romano"
+			self.apto = False
 		else:
 			self.numeroR = list(numeroR)
 			self.numerosoliR = numeroR
+			self.apto = True
+
+
+		return n,self.numeroR,self.txt,self.apto
 
 
 

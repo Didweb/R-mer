@@ -47,26 +47,38 @@ def menu():
 	print "\t9 - Salir "
 
 
-def flujo(apto):
+def flujo(apto,tipoCalculo):
 	"""
 	Creacion de flujo de opciones.
 
 	Erstellen von Flussoptionen.
 	"""
-	if apto == False:
-		deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
 
-		clear()
-		while apto == True:
-			deciRoma.insertar()
-			deciRoma.errores(deciRoma.numerosoli)
+	if tipoCalculo=="dr":
+		if apto == False:
+			deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
 
-	else:
-		deciRoma.calcula()
-		clear()
-		deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
-		menu()
+			clear()
+			while apto == True:
+				deciRoma.insertar()
+				deciRoma.errores(deciRoma.numerosoli)
 
+		else:
+			deciRoma.calcula()
+			clear()
+			deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
+			menu()
+
+	elif tipoCalculo=="rd":
+
+		if apto == False:
+			romaDeci.mensa(romaDeci.txt,romaDeci.numerosoli)
+
+		else:
+			romaDeci.calcula()
+			clear()
+			romaDeci.pintarResultado('r',deciRoma.numerosoli,deciRoma.romano)
+			menu()
 menu()
 while True:
 	""" Ciclo por dnde hacemos correr el menú y las distintas opciones.
@@ -79,14 +91,14 @@ while True:
 		deciRoma.insertar()
 		clear()
 		deciRoma.errores(deciRoma.numerosoli)
-		flujo(deciRoma.apto)
+		flujo(deciRoma.apto,"dr")
 
 	elif opcionMenu=="2":
 		print ""
 		romaDeci.insertarR()
 		clear()
-		romaDeci.calculaR()
-		menu()
+		romaDeci.pintarResultado('r',deciRoma.numerosoli,deciRoma.romano)
+		flujo(deciRoma.apto,"rd")
 
 	elif opcionMenu=="9":
 		break

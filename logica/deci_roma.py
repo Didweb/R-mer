@@ -102,14 +102,9 @@ class DeciRoma(salida):
 		self.txt=""
 		if n.isdigit()== False:
 			self.txt = " NO es un número. debe introducir un número."
-			#self.mensa(" NO es un número. debe introducir un número.",n)
-			#self.insertar()
-			self.apto = False
 
 		elif int(n) > self.limite :
 			self.txt = "No podemos calcular números superiores a "+str(self.limite)
-			#self.mensa("No podemos calcular números superiores a "+str(self.limite))
-			#self.insertar()
 			self.apto = False
 		else:
 			self.numero = list(n)
