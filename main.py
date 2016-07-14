@@ -46,6 +46,27 @@ def menu():
 	print "\t2 - Romano >> Decimal  "
 	print "\t9 - Salir "
 
+
+def flujo(apto):
+	"""
+	Creacion de flujo de opciones.
+
+	Erstellen von Flussoptionen.
+	"""
+	if apto == False:
+		deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
+
+		clear()
+		while apto == True:
+			deciRoma.insertar()
+			deciRoma.errores(deciRoma.numerosoli)
+
+	else:
+		deciRoma.calcula()
+		clear()
+		deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
+		menu()
+
 menu()
 while True:
 	""" Ciclo por dnde hacemos correr el menú y las distintas opciones.
@@ -57,18 +78,8 @@ while True:
 		print ""
 		deciRoma.insertar()
 		clear()
-
 		deciRoma.errores(deciRoma.numerosoli)
-		if deciRoma.apto == False:
-			deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
-			menu()
-			deciRoma.insertar()
-			clear()
-			deciRoma.errores(deciRoma.numerosoli)
-		else:
-			deciRoma.calcula()
-			deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
-			menu()
+		flujo(deciRoma.apto)
 
 	elif opcionMenu=="2":
 		print ""
