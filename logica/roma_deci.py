@@ -79,7 +79,10 @@ class RomaDeci(salida):
 				dante = (actual - anterior)-anterior
 			else:
 				dante = actual
-			self.resultadoR = resultadoR + dante
+
+			resultadoR = resultadoR + dante
+			print actual
+		self.resultadoR = resultadoR
 
 		return self.numerosoliR,self.resultadoR
 
