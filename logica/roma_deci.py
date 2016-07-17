@@ -81,7 +81,7 @@ class RomaDeci(salida):
 				dante = actual
 
 			resultadoR = resultadoR + dante
-			print actual
+
 		self.resultadoR = resultadoR
 
 		return self.numerosoliR,self.resultadoR
@@ -105,6 +105,7 @@ class RomaDeci(salida):
 		tipo_error = ""
 		marca = 0
 
+		self.numeroR = list(numeroR)
 		self.numero = 0
 		self.numerosoli = numeroR
 		self.txt=""
@@ -118,27 +119,46 @@ class RomaDeci(salida):
 			for x in range(0,n_lis):
 				actual = self.unidadesRomanas[lis[x]]
 				anterior = self.unidadesRomanas[lis[x-1]]
+
+
+				"""
+				Error de Dos a tras.
+				"""
 				if x>=2:
 					dosAtras = self.unidadesRomanas[lis[x-2]]
+
 				else:
 					dosAtras = 10000
 
+
+				"""
+				Error de Dos a tras.
+				"""
 				if  x>0  and dosAtras!=None and actual > dosAtras  :
 					contador=1
 					tipo_error=" dosAtras MENOR "
 
+				"""
+				Error de 3 iguales a la derecha
+				"""
+
+				if  (x-3) >= 0  :
+
+					if self.unidadesRomanas[lis[x-3]] == actual:
+						contador=1
+						tipo_error=" Cuatro iguales juntos no esta permitido "
 
 
 		if contador>0:
 			self.txt=" TIPO: "+tipo_error+" --> ERROR No es un número romano"
 			self.apto = False
 		else:
-			self.numeroR = list(numeroR)
+
 			self.numerosoliR = numeroR
 			self.apto = True
 
 
-		return numeroR,self.numeroR,self.txt,self.apto
+		return self.numeroR,self.txt,self.apto
 
 
 
