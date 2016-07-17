@@ -79,7 +79,7 @@ class RomaDeci(salida):
 				dante = (actual - anterior)-anterior
 			else:
 				dante = actual
-			resultadoR = resultadoR + dante
+			self.resultadoR = resultadoR + dante
 
 		return self.numerosoliR,self.resultadoR
 
@@ -103,7 +103,7 @@ class RomaDeci(salida):
 		marca = 0
 
 		self.numero = 0
-		self.numerosoli = n
+		self.numerosoli = numeroR
 		self.txt=""
 
 		for i in lis:
@@ -135,7 +135,7 @@ class RomaDeci(salida):
 			self.apto = True
 
 
-		return n,self.numeroR,self.txt,self.apto
+		return numeroR,self.numeroR,self.txt,self.apto
 
 
 

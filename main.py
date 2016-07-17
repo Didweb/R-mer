@@ -47,38 +47,49 @@ def menu():
 	print "\t9 - Salir "
 
 
-def flujo(apto,tipoCalculo):
+
+def flujo(tipo):
 	"""
 	Creacion de flujo de opciones.
 
 	Erstellen von Flussoptionen.
 	"""
+	if tipo == "dr":
 
-	if tipoCalculo=="dr":
-		if apto == False:
-			deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
+		deciRoma.insertar()
+		clear()
+		deciRoma.errores(deciRoma.numerosoli)
 
-			clear()
-			while apto == True:
+		while True:
+			if deciRoma.apto == False:
+				deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
 				deciRoma.insertar()
 				deciRoma.errores(deciRoma.numerosoli)
+			else:
+				clear()
+				deciRoma.calcula()
+				deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
+				menu()
+				break
 
-		else:
-			deciRoma.calcula()
-			clear()
-			deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
-			menu()
+	elif tipo =="rd":
 
-	elif tipoCalculo=="rd":
+		romaDeci.insertarR()
+		clear()
+		romaDeci.erroresR(romaDeci.numerosoli)
 
-		if apto == False:
-			romaDeci.mensa(romaDeci.txt,romaDeci.numerosoli)
+		while True:
+			if romaDeci.apto == False:
+				romaDeci.mensa(romaDeci.txt,romaDeci.numerosoli)
+				romaDeci.insertarR()
+				romaDeci.erroresR(romaDeci.numerosoli)
+			else:
+				clear()
+				romaDeci.calculaR()
+				romaDeci.pintarResultado('r',romaDeci.numerosoli,romaDeci.resultadoR)
+				menu()
+				break
 
-		else:
-			romaDeci.calcula()
-			clear()
-			romaDeci.pintarResultado('r',deciRoma.numerosoli,deciRoma.romano)
-			menu()
 menu()
 while True:
 	""" Ciclo por dnde hacemos correr el menú y las distintas opciones.
@@ -87,18 +98,10 @@ while True:
 	opcionMenu = raw_input("Inserta opción del menú >> ")
 
 	if opcionMenu=="1":
-		print ""
-		deciRoma.insertar()
-		clear()
-		deciRoma.errores(deciRoma.numerosoli)
-		flujo(deciRoma.apto,"dr")
+		flujo("dr")
 
 	elif opcionMenu=="2":
-		print ""
-		romaDeci.insertarR()
-		clear()
-		romaDeci.pintarResultado('r',deciRoma.numerosoli,deciRoma.romano)
-		flujo(deciRoma.apto,"rd")
+		flujo("rd")
 
 	elif opcionMenu=="9":
 		break
