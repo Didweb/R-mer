@@ -53,14 +53,14 @@ class Entrada:
 
 		entryDR = gtk.Entry()
 		entryDR.set_max_length(50)
-		entryDR.connect("activate", self.EjecutaCalculoDR,entryDR,resultadoDR)
+		entryDR.connect("activate", self.EjecutarCalculo,entryDR,resultadoDR,"dr")
 		entryDR.set_text("")
 		entryDR.insert_text("", len(entryDR.get_text()))
 		entryDR.select_region(0, len(entryDR.get_text()))
 
 		entryRD = gtk.Entry()
 		entryRD.set_max_length(50)
-		entryRD.connect("activate", self.EjecutaCalculoRD,entryRD,resultadoRD)
+		entryRD.connect("activate", self.EjecutarCalculo,entryRD,resultadoRD,"rd")
 		entryRD.set_text("")
 		entryRD.insert_text("", len(entryRD.get_text()))
 		entryRD.select_region(0, len(entryRD.get_text()))
@@ -79,37 +79,38 @@ class Entrada:
 		resultadoRD.show()
 		window.show()
 
-	def EjecutaCalculoDR(self,widget,entry,resultadoDR):
+	def EjecutarCalculo(self,widget,entry,resultado,tipo):
 
 		entry_text = entry.get_text()
-		modoDR = DeciRoma()
-		modoDR.errores(entry_text)
-
-		if modoDR.apto==True:
-			modoDR.calcula()
-			self.miDR = "El decimal =  {} es {} " . format(modoDR.numerosoli,modoDR.romano)
-		else:
-			self.miDR = modoDR.txt
-
-		resultadoDR.set_text(self.miDR)
+		text = ""
+		if tipo == "dr":
+			modoDR = DeciRoma()
+			modoDR.errores(entry_text)
 
 
+			if modoDR.apto == True:
+				modoDR.calcula()
+				texto = "El decimal =  {} es {} " . format(modoDR.numerosoli,modoDR.romano)
+			else:
+				texto = modoDR.txt
 
-	def EjecutaCalculoRD(self,widget,entry,resultadoRD):
 
-		entry_text = entry.get_text()
-		entry_text = entry_text.upper()
-		modoRD = RomaDeci()
-		modoRD.erroresR(entry_text)
 
-		if modoRD.apto==True:
-			modoRD.calculaR()
-			self.miRD = "El romano =  {} es {} " . format(modoRD.numerosoliR,modoRD.resultadoR)
+		elif tipo =="rd":
+			modoRD = RomaDeci()
+			modoRD.erroresR(entry_text.upper())
 
-		else:
-			self.miRD = modoRD.txt
 
-		resultadoRD.set_text(self.miRD)
+			if modoRD.apto == True:
+				modoRD.calculaR()
+				texto = "El romano =  {} es {} " . format(modoRD.numerosoliR,modoRD.resultadoR)
+			else:
+				texto = modoRD.txt
+
+
+
+		resultado.set_text(texto)
+
 
 
 

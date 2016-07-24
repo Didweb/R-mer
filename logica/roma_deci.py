@@ -100,7 +100,8 @@ class RomaDeci():
 		for i in lis:
 			if self.unidadesRomanas.get(i)==None:
 				contador +=1
-				tipo_error=" CARACTER NO ACEPTADO "
+				tipo_error=" CARACTER NO ACEPTADO Er.1"
+
 
 		if contador==0 and n_lis > 1:
 			for x in range(0,n_lis):
@@ -123,7 +124,7 @@ class RomaDeci():
 				"""
 				if  x>0  and dosAtras!=None and actual > dosAtras  :
 					contador=1
-					tipo_error=" dosAtras MENOR "
+					tipo_error=" Número romano no valido Er.2"
 
 				"""
 				Error de 3 iguales a la derecha
@@ -133,11 +134,22 @@ class RomaDeci():
 
 					if self.unidadesRomanas[lis[x-3]] == actual:
 						contador=1
-						tipo_error=" Cuatro iguales juntos no esta permitido "
+						tipo_error=" Número romano no valido Er.4 "
 
+				if  (x-2) >= 0  :
+
+					if self.unidadesRomanas[lis[x-2]] == actual and self.unidadesRomanas[lis[x-1]] != actual:
+						contador=1
+						tipo_error=" Número romano no valido Er.5 "
+
+				if  (x-2) >= 0  :
+
+					if (self.unidadesRomanas[lis[x-1]]-actual) == 0 and actual >1:
+						contador=1
+						tipo_error=" Número romano no valido Er.6 "
 
 		if contador>0:
-			self.txt=" TIPO: "+tipo_error+" --> ERROR No es un número romano"
+			self.txt=" ERROR: "+tipo_error
 			self.apto = False
 		else:
 
