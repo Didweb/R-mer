@@ -142,11 +142,18 @@ class RomaDeci():
 						contador=1
 						tipo_error=" Número romano no valido Er.5 "
 
-				if  (x-2) >= 0  :
-
-					if (self.unidadesRomanas[lis[x-1]]-actual) == 0 and actual >1:
+					if (self.unidadesRomanas[lis[x-1]]-actual) == 0 and actual ==5:
 						contador=1
 						tipo_error=" Número romano no valido Er.6 "
+
+					if self.unidadesRomanas[lis[x-1]] == 5 and actual == 5:
+						contador=1
+						tipo_error=" Número romano no valido Er.7 "
+
+				if  (x-1) >= 0  :
+					if self.unidadesRomanas[lis[x-1]] == 5 and actual == 5:
+						contador=1
+						tipo_error=" Número romano no valido Er.8 "
 
 		if contador>0:
 			self.txt=" ERROR: "+tipo_error
