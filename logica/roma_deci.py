@@ -109,9 +109,6 @@ class RomaDeci():
 				anterior = self.unidadesRomanas[lis[x-1]]
 
 
-				"""
-				Error de Dos a tras.
-				"""
 				if x>=2:
 					dosAtras = self.unidadesRomanas[lis[x-2]]
 
@@ -119,16 +116,10 @@ class RomaDeci():
 					dosAtras = 10000
 
 
-				"""
-				Error de Dos a tras.
-				"""
 				if  x>0  and dosAtras!=None and actual > dosAtras  :
 					contador=1
 					tipo_error=" Número romano no valido Er.2"
 
-				"""
-				Error de 3 iguales a la derecha
-				"""
 
 				if  (x-3) >= 0  :
 

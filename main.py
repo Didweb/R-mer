@@ -38,7 +38,7 @@ class Entrada:
 		window.set_size_request(400, 300)
 		window.set_title("Conversor numérico")
 		window.connect("delete_event", lambda w,e: gtk.main_quit())
-
+		window.set_icon_from_file('./img/roma.gif')
 
 		vbox = gtk.VBox(False, 0)
 
