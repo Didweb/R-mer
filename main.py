@@ -26,89 +26,104 @@
 from logica.deci_roma import DeciRoma
 from logica.roma_deci import RomaDeci
 
-from tics.consola import clear
+import pygtk
+pygtk.require('2.0')
+import gtk
+
+
+class Entrada:
+	def __init__(self):
+
+		window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+		window.set_size_request(400, 300)
+		window.set_title("Conversor numérico")
+		window.connect("delete_event", lambda w,e: gtk.main_quit())
+
+
+		vbox = gtk.VBox(False, 0)
+
+
+		resultadoDR = gtk.Label("Pon Datos DR")
+		resultadoRD = gtk.Label("Pon Datos RD")
 
 
 
-clear()
-deciRoma = DeciRoma()
-romaDeci = RomaDeci()
+		window.add(vbox)
+		vbox.show()
+
+		entryDR = gtk.Entry()
+		entryDR.set_max_length(50)
+		entryDR.connect("activate", self.EjecutaCalculoDR,entryDR,resultadoDR)
+		entryDR.set_text("")
+		entryDR.insert_text("", len(entryDR.get_text()))
+		entryDR.select_region(0, len(entryDR.get_text()))
+
+		entryRD = gtk.Entry()
+		entryRD.set_max_length(50)
+		entryRD.connect("activate", self.EjecutaCalculoRD,entryRD,resultadoRD)
+		entryRD.set_text("")
+		entryRD.insert_text("", len(entryRD.get_text()))
+		entryRD.select_region(0, len(entryRD.get_text()))
 
 
-def menu():
-	"""
-	Creación del menú.
+		vbox.pack_start(resultadoDR, True, True, 0)
+		vbox.pack_start(entryDR, True, True, 0)
 
-	Menü-Erstellung.
-	"""
-	print "---------MENÚ-------------"
-	print "\t1 - Decimal >> Romano "
-	print "\t2 - Romano >> Decimal  "
-	print "\t9 - Salir "
+		vbox.pack_start(resultadoRD, True, True, 0)
+		vbox.pack_start(entryRD, True, True, 0)
 
+		entryDR.show()
+		resultadoDR.show()
 
+		entryRD.show()
+		resultadoRD.show()
+		window.show()
 
-def flujo(tipo):
-	"""
-	Creacion de flujo de opciones.
+	def EjecutaCalculoDR(self,widget,entry,resultadoDR):
 
-	Erstellen von Flussoptionen.
-	"""
-	if tipo == "dr":
+		entry_text = entry.get_text()
+		modoDR = DeciRoma()
+		modoDR.errores(entry_text)
 
-		deciRoma.insertar()
-		clear()
-		deciRoma.errores(deciRoma.numerosoli)
+		if modoDR.apto==True:
+			modoDR.calcula()
+			self.miDR = "El decimal =  {} es {} " . format(modoDR.numerosoli,modoDR.romano)
+		else:
+			self.miDR = modoDR.txt
 
-		while True:
-			if deciRoma.apto == False:
-				deciRoma.mensa(deciRoma.txt,deciRoma.numerosoli)
-				deciRoma.insertar()
-				deciRoma.errores(deciRoma.numerosoli)
-			else:
-				clear()
-				deciRoma.calcula()
-				deciRoma.pintarResultado('d',deciRoma.numerosoli,deciRoma.romano)
-				menu()
-				break
-
-	elif tipo =="rd":
-
-		romaDeci.insertarR()
-		clear()
-		romaDeci.erroresR(romaDeci.numerosoli)
-
-		while True:
-			if romaDeci.apto == False:
-				romaDeci.mensa(romaDeci.txt,romaDeci.numerosoli)
-				romaDeci.insertarR()
-				romaDeci.erroresR(romaDeci.numerosoli)
-			else:
-				clear()
-				romaDeci.calculaR()
-				romaDeci.pintarResultado('r',romaDeci.numerosoli,romaDeci.resultadoR)
-				menu()
-				break
-
-menu()
-while True:
-	""" Ciclo por dnde hacemos correr el menú y las distintas opciones.
-
-	Zyklus, in dem wir das Menü und die verschiedenen Optionen laufen. """
-	opcionMenu = raw_input("Inserta opción del menú >> ")
-
-	if opcionMenu=="1":
-		flujo("dr")
-
-	elif opcionMenu=="2":
-		flujo("rd")
-
-	elif opcionMenu=="9":
-		break
-
-	else:
-		clear()
-		print "No has pulsado una opción correcta..."
-		menu()
+		resultadoDR.set_text(self.miDR)
 
 
+
+	def EjecutaCalculoRD(self,widget,entry,resultadoRD):
+
+		entry_text = entry.get_text()
+		entry_text = entry_text.upper()
+		modoRD = RomaDeci()
+		modoRD.erroresR(entry_text)
+		print "Valor entrado = ",entry_text
+		if modoRD.apto==True:
+			modoRD.calculaR()
+			self.miRD = "El Romano =  {} es {} " . format(modoRD.numerosoliR,modoRD.resultadoR)
+
+			print "NumerosoliR = ",modoRD.numerosoliR
+			print "resultadoR = ",modoRD.resultadoR
+
+		else:
+			self.miRD = modoRD.txt
+			print "apto = ",modoRD.apto
+			#print "resultadoR = ",self.numeroR
+			print "txt = ",modoRD.txt
+
+		resultadoRD.set_text(self.miRD)
+
+
+
+
+def main():
+    gtk.main()
+    return 0
+
+if __name__ == "__main__":
+    Entrada()
+    main()

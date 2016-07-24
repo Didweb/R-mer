@@ -23,9 +23,8 @@
 #
 
 from tics.consola import clear
-from salidas import salida
 
-class RomaDeci(salida):
+class RomaDeci():
 	"""
 	Clase para convertir números romanos a sistmea dicemal y de sistema
 	decimal a romano.
@@ -48,17 +47,6 @@ class RomaDeci(salida):
 
 		self.unidadesRomanas = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
 
-
-
-
-	def insertarR(self):
-		"""
-		Entrada del número romano.
-
-		Römische Ziffer Eingang.
-		"""
-		numeroR = raw_input("Introduce un número Romano: ")
-		self.erroresR(numeroR.upper())
 
 
 	def calculaR(self):

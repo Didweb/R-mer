@@ -24,10 +24,9 @@
 
 from tics.consola import clear
 
-from salidas import salida
 
 
-class DeciRoma(salida):
+class DeciRoma():
 	"""
 	Clase para convertir números romanos a sistmea dicemal y de sistema
 	decimal a romano.
@@ -54,18 +53,6 @@ class DeciRoma(salida):
 
 
 		self.limite = 9000
-
-
-	def insertar(self):
-		"""
-		Entrada  del número entero.
-
-		Integer-Eingang.
-		"""
-		numero = raw_input("Introduce un número para convertirlo en romano: ")
-		self.errores(numero)
-
-
 
 
 	def calcula(self):
