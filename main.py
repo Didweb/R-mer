@@ -101,19 +101,13 @@ class Entrada:
 		entry_text = entry_text.upper()
 		modoRD = RomaDeci()
 		modoRD.erroresR(entry_text)
-		print "Valor entrado = ",entry_text
+
 		if modoRD.apto==True:
 			modoRD.calculaR()
-			self.miRD = "El Romano =  {} es {} " . format(modoRD.numerosoliR,modoRD.resultadoR)
-
-			print "NumerosoliR = ",modoRD.numerosoliR
-			print "resultadoR = ",modoRD.resultadoR
+			self.miRD = "El romano =  {} es {} " . format(modoRD.numerosoliR,modoRD.resultadoR)
 
 		else:
 			self.miRD = modoRD.txt
-			print "apto = ",modoRD.apto
-			#print "resultadoR = ",self.numeroR
-			print "txt = ",modoRD.txt
 
 		resultadoRD.set_text(self.miRD)
 

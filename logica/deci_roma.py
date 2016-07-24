@@ -22,7 +22,7 @@
 #
 #
 
-from tics.consola import clear
+
 
 
 

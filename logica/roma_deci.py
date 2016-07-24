@@ -22,7 +22,6 @@
 #
 #
 
-from tics.consola import clear
 
 class RomaDeci():
 	"""
